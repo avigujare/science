@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Insight</title>
+    <link rel="icon" href="Energy/favicon.ico" type="image/png">
+    <style>
+        body {
+          font-family: 'Roboto', Arial, sans-serif;
+          line-height: 1.6;
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(135deg, #4fbdb2, #012e61);
+          color: #333;
+        }
+        header {
+          background: linear-gradient(90deg, #379e53, #4fbdb2);
+          color: #fff;
+          padding: 40px 20px;
+          text-align: center;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+          font-size: 2.5rem;
+          margin: 0;
+        }
+        header p {
+          font-size: 1.2rem;
+          margin-top: 10px;
+        }
+        section {
+          padding: 20px;
+          margin: 20px auto;
+          max-width: 800px;
+          border: 1px solid #ccc;
+          border-radius: 12px;
+          background: #ffffff;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+          font-size: 1.5rem;
+          color: #0a74da;
+          margin: 0;
+        }
+        .button {
+          padding: 12px 24px;
+          font-size: 16px;
+          color: #fff;
+          background: linear-gradient(90deg, #379e53, #4fbdb2);
+          border: none;
+          border-radius: 25px;
+          cursor: pointer;
+          text-decoration: none;
+          transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .button:hover {
+          background: linear-gradient(90deg, #379e53, #4fbdb2);
+          transform: scale(1.05);
+        }
+        footer {
+          text-align: center;
+          padding: 15px;
+          background: linear-gradient(90deg, #379e53, #4fbdb2);
+          color: #fff;
+          margin-top: 20px;
+          font-size: 0.9rem;
+        }
+        footer p {
+          margin: 5px 0;
+        }
+        .rotating-text {
+          font-size: 1.2rem;
+          white-space: nowrap;
+          overflow: hidden;
+          border-right: 2px solid #fff;
+          display: inline-block;
+          animation: blink 0.6s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Electricity and Its Reasons</h1>
+    <p id="rotating-text" class="rotating-text"></p>
+</header>
+
+<section>
+    <h2>1. How is Wind Energy Produced?</h2>
+    <a href="page_1.html" class="button">Learn More</a>
+</section>
+
+<section>
+    <h2>2. How and why is Wind Energy wasted?</h2>
+    <a href="page_2.html" class="button">Learn More</a>
+</section>
+
+<section>
+    <h2>3. How does producing Wind Energy impact the enviroment?</h2>
+    <a href="page_3.html" class="button">Learn More</a>
+</section>
+
+<section>
+    <h2>4. How does using Wind Energy impact the enviroment?</h2>
+    <a href="page_4.html" class="button">Learn More</a>
+</section>
+
+<section>
+    <h2>5. How can we waste less Wind Enery?</h2>
+    <a href="page_5.html" class="button">Learn More</a>
+</section>
+
+<section>
+    <h2>6. How can we reduce its impact on the environment?</h2>
+    <a href="page_6.html" class="button">Learn More</a>
+</section>
+
+<section>
+    <h2>Lets See Some Fun Facts!!</h2>
+     <a href="fun_facts.html" class="button">Learn More</a>
+</section>
+<footer>
+    <p>&copy; 2025 Creator and Developer Simrat Kaur | Science Project</p>
+    <p>&copy; 2025 Researchers Nehashri and Niki | Science Project</p>
+</footer>
+
+<script>
+    const phrases = [
+        "WELCOME TO ENERGY INFORMATION",
+        "ELECTRICITY",
+        "RESOURCES",
+        "SAVING RESOURCES",
+        "IMPACT ON ENVIROMENT",
+    ];
+
+    let currentPhraseIndex = 0;
+    const rotatingText = document.getElementById("rotating-text");
+    let charIndex = 0;
+    let typingSpeed = 100;
+    let deletingSpeed = 50;
+
+    function typeText() {
+        const currentPhrase = phrases[currentPhraseIndex];
+
+        if (charIndex < currentPhrase.length) {
+            rotatingText.textContent += currentPhrase[charIndex];
+            charIndex++;
+            setTimeout(typeText, typingSpeed);
+        } else {
+            setTimeout(deleteText, 2000);
+        }
+    }
+
+    function deleteText() {
+        const currentPhrase = phrases[currentPhraseIndex];
+
+        if (charIndex > 0) {
+            rotatingText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(deleteText, deletingSpeed);
+        } else {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            setTimeout(typeText, 500);
+        }
+    }
+
+    typeText();
+</script>
+
+</body>
+</html>
